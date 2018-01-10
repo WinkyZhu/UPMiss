@@ -2,7 +2,7 @@
 
     <string name="app_name">UPMiss</string>
     <string name="app_welcome">欢迎您使用·UPMiss·！</string>
-
+    <string name="app_welcome_alert">欢迎您使用·DateAlert·！</string>
     <string name="action_sync">同步</string>
     <string name="action_save">保存</string>
     <string name="action_find">发现</string>
@@ -179,5 +179,6 @@
     <string name="txt_about_group">QQGroup: 387403637</string>
     <string name="txt_about_alipay">AliPay: qiujuer</string>
     <string name="txt_about_wechat">WeChat: qiujuerman</string>
+    <string name="txt_phone">电话</string>
 
 </resources>

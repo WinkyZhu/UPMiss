@@ -8,7 +8,9 @@
     <string name="status_sync_failed">Sync Failed!</string>
 
     <string name="status_account_email_null">Email cannot be empty!</string>
+    <string name="status_account_phone_null">Phone cannot be empty!</string>
     <string name="status_account_email_incorrect">Incorrect email format!</string>
+    <string name="status_account_phone_incorrect">Incorrect phone format!</string>
     <string name="status_account_password_incorrect">Password should be 6~18 len!</string>
     <string name="status_account_password_not_confirm">Password and confirm password must be the same!</string>
 

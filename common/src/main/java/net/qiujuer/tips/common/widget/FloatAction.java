@@ -38,11 +38,11 @@ public class FloatAction extends FloatActionButton {
 
     private void init() {
         final float density = getContext().getResources().getDisplayMetrics().density;
-        mPaint.setStyle(Paint.Style.FILL);
-        mPaint.setAntiAlias(true);
-        mPaint.setDither(true);
+        mPaint.setStyle(Paint.Style.FILL);//Paint.Style.STROKE 只绘制图形轮廓（描边）Paint.Style.FILL 只绘制图形内容 Paint.Style.FILL_AND_STROKE 既绘制轮廓也绘制内容
+        mPaint.setAntiAlias(true);//抗锯齿
+        mPaint.setDither(true);//防抖动
         mPaint.setColor(getResources().getColor(R.color.white_alpha_192));
-        mPaint.setStrokeWidth(2 * density);
+        mPaint.setStrokeWidth(2 * density);//设置线宽
 
     }
 

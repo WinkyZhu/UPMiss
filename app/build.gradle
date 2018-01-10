@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion ANDROID_BUILD_SDK_VERSION as int
+    compileSdkVersion 27
     buildToolsVersion ANDROID_BUILD_TOOLS_VERSION
 
     defaultConfig {
@@ -44,7 +44,6 @@ repositories {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-
     compile project(':common')
     compile project(':factory')
     compile "com.android.support:support-v4:$rootProject.ext.supportLibraryVersion"
@@ -55,5 +54,5 @@ dependencies {
     compile "net.qiujuer.genius:res:$rootProject.ext.geniusVersion"
     compile "net.qiujuer.genius:kit-handler:$rootProject.ext.geniusVersion"
     compile "net.qiujuer.genius:ui:$rootProject.ext.geniusVersion"
-    compile "uk.co.chrisjenx:calligraphy:$rootProject.ext.calligraphyVersion"
+    compile "uk.co.chrisjenx:calligraphy:$rootProject.ext.calligraphyVersion"//高效加载字体包
 }

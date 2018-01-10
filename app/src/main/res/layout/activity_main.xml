@@ -34,7 +34,10 @@
         android:layout_marginRight="@dimen/len_16"
         android:contentDescription="@string/txt_null"
         app:iFloatColor="@color/cyan_500"
-        app:iFloatPressColor="@color/cyan_700"
+        app:iFloatPressColor="@color/amber_700"
         tools:ignore="RtlHardcoded" />
+
+    <!--app:iFloatPressColor="@color/cyan_700"-->
+
 
 </RelativeLayout>

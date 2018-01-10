@@ -40,11 +40,12 @@
             <net.qiujuer.genius.ui.widget.EditText
                 android:id="@+id/account_edit_login_email"
                 style="@style/EditText.Account"
-                android:digits=".0123456789qwertyuiopasdfghjklzxcvbnm@"
-                android:hint="@string/txt_email"
-                android:inputType="textEmailAddress"
+                android:inputType="phone"
+                android:hint="@string/txt_phone"
                 android:textColorHint="@color/color_edit_account_hint" />
 
+            <!--android:hint="@string/txt_email"-->
+            <!--android:inputType="textEmailAddress"-->
             <net.qiujuer.genius.ui.widget.EditText
                 android:id="@+id/account_edit_login_password"
                 style="@style/EditText.Account"

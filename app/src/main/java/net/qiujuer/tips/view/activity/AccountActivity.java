@@ -74,6 +74,8 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
         mAccountLoginPresenter = mRegisterPresenter;
     }
 
+    //
+    // TODO: 2018/1/9 0009 通过视图view判断是否登录,而非存储数据 
     private boolean isLogin() {
         View view = mViewAnimator.getCurrentView();
         return view.getId() == R.id.account_lay_login;
@@ -82,14 +84,14 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.account_btn_submit:
+            case R.id.account_btn_submit://
                 if (isLogin()) {
                     mAccountLoginPresenter.login();
                 } else {
                     mRegisterPresenter.register();
                 }
                 break;
-            case R.id.account_btn_change: {
+            case R.id.account_btn_change: {//
                 mViewAnimator.showNext();
                 if (isLogin()) {
                     mTxtWhether.setText(getResources().getString(R.string.txt_not_have_account));
@@ -109,6 +111,14 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public String getEmail() {
+        if (isLogin())
+            return mEditLoginEmail.getText().toString();
+        else
+            return mEditRegisterEmail.getText().toString();
+    }
+
+    @Override
+    public String getPhone() {
         if (isLogin())
             return mEditLoginEmail.getText().toString();
         else
@@ -152,6 +162,13 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
     public void setEmail(String email) {
         mEditLoginEmail.setText(email);
         mEditRegisterEmail.setText(email);
+    }
+
+    @Override
+    public void setPhone(String phone) {
+        mEditLoginEmail.setText(phone);
+        mEditRegisterEmail.setText(phone);
+
     }
 
     @Override

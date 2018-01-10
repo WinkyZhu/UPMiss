@@ -7,12 +7,14 @@ import android.support.annotation.StringRes;
  */
 public interface LoginView {
     String getEmail();
+    String getPhone();
 
     String getPassword();
 
     void setStatus(@StringRes int stringRes);
 
     void setEmail(String email);
+    void setPhone(String phone);
 
     void onlyChangePassword();
 }

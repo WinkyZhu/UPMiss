@@ -55,6 +55,7 @@ public class SyncPresenter extends BroadcastReceiver {
         });
     }
 
+    //同步
     public void sync() {
         SyncView view = mView;
         if (view == null)

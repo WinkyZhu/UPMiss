@@ -35,8 +35,12 @@ public class AccountLoginPresenter {
         mView = view;
         // check email
         AccountPreference accountPreference = AccountPreference.getInstance();
-        if (!TextUtils.isEmpty(accountPreference.getEmail())) {
-            mView.setEmail(accountPreference.getEmail());
+//        if (!TextUtils.isEmpty(accountPreference.getEmail())) {
+//            mView.setEmail(accountPreference.getEmail());
+//        }
+
+        if (!TextUtils.isEmpty(accountPreference.getPhone())) {
+            mView.setPhone(accountPreference.getEmail());
         }
         // check re login
         if(AccountPreference.isLogin()){
@@ -45,12 +49,21 @@ public class AccountLoginPresenter {
     }
 
     protected boolean verify(AccountLoginModel model) {
-        if (TextUtils.isEmpty(mView.getEmail())) {
-            setStatus(R.string.status_account_email_null);
+//        if (TextUtils.isEmpty(mView.getEmail())) {
+//            setStatus(R.string.status_account_email_null);
+//            return false;
+//        }
+//
+//        if (!isEmail(mView.getEmail())) {
+//            setStatus(R.string.status_account_email_incorrect);
+//            return false;
+//        }
+        if (TextUtils.isEmpty(mView.getPhone())) {
+            setStatus(R.string.status_account_phone_null);
             return false;
         }
 
-        if (!isEmail(mView.getEmail())) {
+        if (!isEmail(mView.getPhone())) {
             setStatus(R.string.status_account_email_incorrect);
             return false;
         }
@@ -62,7 +75,8 @@ public class AccountLoginPresenter {
             return false;
         }
 
-        model.setEmail(mView.getEmail());
+//        model.setEmail(mView.getEmail());
+        model.setPhone(mView.getPhone());
         model.setPassword(mView.getPassword());
 
         // This password is explicit
@@ -139,10 +153,12 @@ public class AccountLoginPresenter {
         setStatus(model.getStatusStringRes());
     }
 
+    //绑定成功
     protected void onBindSucceed() {
         setStatus(R.string.status_account_bind_succeed);
     }
 
+    //绑定失败
     protected void onBindFailed(RspModel<PhoneBindRspModel> model) {
         setStatus(R.string.status_account_bind_failed);
     }

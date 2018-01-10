@@ -8,20 +8,29 @@ import java.lang.reflect.Type;
 import java.util.Date;
 
 public class AccountRspModel {
-    @SerializedName("Email")
-    private String email;
+//    @SerializedName("Email")
+//    private String email;
+//    @SerializedName("AccessToken")
+//    private String accessToken;
+//    @SerializedName("ExpiresIn")
+//    private Date expiresIn;
+//
+    @SerializedName("Phone")
+    private String phone;
     @SerializedName("AccessToken")
     private String accessToken;
     @SerializedName("ExpiresIn")
     private Date expiresIn;
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+
+//    public String getEmail() {
+//        return email;
+//    }
+//
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
 
     public String getAccessToken() {
         return accessToken;
@@ -42,5 +51,13 @@ public class AccountRspModel {
     public static Type getRspType() {
         return new TypeToken<RspModel<AccountRspModel>>() {
         }.getType();
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

@@ -15,6 +15,7 @@ public class AccountPreference extends XmlPreference {
     private Date expiresIn;
     private String phoneToken;
     private Date syncLast;
+    private String phone;
 
     public static AccountPreference getInstance() {
         if (INSTANCE == null) {
@@ -24,6 +25,14 @@ public class AccountPreference extends XmlPreference {
             }
         }
         return INSTANCE;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     private AccountPreference() {
@@ -72,11 +81,12 @@ public class AccountPreference extends XmlPreference {
 
     @Override
     protected void refresh(SharedPreferences sp) {
-        email = sp.getString("Email", "");
+//        email = sp.getString("Email", "");
         accessToken = sp.getString("AccessToken", "");
         expiresIn = new Date(sp.getLong("ExpiresIn", 0));
         phoneToken = sp.getString("PhoneToken", "");
         syncLast = new Date(sp.getLong("SyncLast", 0));
+        phone=sp.getString("Phone","");
     }
 
     @Override
@@ -89,7 +99,8 @@ public class AccountPreference extends XmlPreference {
         SharedPreferences sp = getSharedPreferences();
         SharedPreferences.Editor editor = sp.edit();
 
-        editor.putString("Email", email);
+//        editor.putString("Email", email);
+        editor.putString("Phone", phone);
         editor.putString("AccessToken", accessToken);
         editor.putLong("ExpiresIn", expiresIn.getTime());
         editor.putString("PhoneToken", phoneToken);
@@ -100,17 +111,29 @@ public class AccountPreference extends XmlPreference {
 
     public static AccountPreference save(AccountRspModel model) {
         AccountPreference accountPreference = getInstance();
-        accountPreference.email = model.getEmail();
+//        accountPreference.email = model.getEmail();
+        //
+        accountPreference.phone = model.getPhone();
         accountPreference.accessToken = model.getAccessToken();
         accountPreference.expiresIn = model.getExpiresIn();
         accountPreference.save();
         return accountPreference;
     }
 
+//    public static boolean isLogin() {
+//        AccountPreference accountPreference = getInstance();
+//        return !(accountPreference.email == null
+//                || accountPreference.email.length() == 0
+//                || accountPreference.accessToken == null
+//                || accountPreference.accessToken.length() == 0
+//                || accountPreference.expiresIn.getTime() == 0
+//                || accountPreference.phoneToken == null
+//                || accountPreference.phoneToken.length() == 0);
+//    }
     public static boolean isLogin() {
         AccountPreference accountPreference = getInstance();
-        return !(accountPreference.email == null
-                || accountPreference.email.length() == 0
+        return !(accountPreference.phone == null
+                || accountPreference.phone.length() == 0
                 || accountPreference.accessToken == null
                 || accountPreference.accessToken.length() == 0
                 || accountPreference.expiresIn.getTime() == 0

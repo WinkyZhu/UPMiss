@@ -16,7 +16,6 @@ import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,7 +32,6 @@ import net.qiujuer.tips.factory.presenter.SyncPresenter;
 import net.qiujuer.tips.factory.view.ProductView;
 import net.qiujuer.tips.factory.view.SyncView;
 import net.qiujuer.tips.view.fragment.ContactsFragment;
-import net.qiujuer.tips.view.fragment.QuickFragment;
 import net.qiujuer.tips.view.fragment.RecordsFragment;
 import net.qiujuer.tips.view.fragment.ZoomOutPageTransformer;
 
@@ -41,6 +39,8 @@ import java.text.SimpleDateFormat;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyTypefaceSpan;
 import uk.co.chrisjenx.calligraphy.TypefaceUtils;
+
+//import net.qiujuer.tips.view.fragment.QuickFragment;
 
 public class MainActivity extends BaseActivity implements ProductView, Toolbar.OnMenuItemClickListener, SyncView, View.OnClickListener {
     private Loading mLoading;
@@ -57,7 +57,7 @@ public class MainActivity extends BaseActivity implements ProductView, Toolbar.O
         setContentView(R.layout.activity_main);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setNavigationIcon(R.mipmap.ic_nav_main);
+//        mToolbar.setNavigationIcon(R.mipmap.ic_nav_main);
         mToolbar.setOnMenuItemClickListener(this);
         mToolbar.inflateMenu(R.menu.menu_main);
 
@@ -85,7 +85,8 @@ public class MainActivity extends BaseActivity implements ProductView, Toolbar.O
     }
 
     private void initSyncItem() {
-        MenuItem sync = mToolbar.getMenu().findItem(R.id.action_sync);
+
+        MenuItem sync = mToolbar.getMenu().findItem(R.id.action_sync);//同步云
 
         View view = sync.getActionView();
         if (view != null) {
@@ -122,28 +123,32 @@ public class MainActivity extends BaseActivity implements ProductView, Toolbar.O
         int id = item.getItemId();
         if (id == R.id.action_sync) {
             return true;
-        } else if (id == R.id.action_search) {
-            SearchKitActivity.show(this);
-            return true;
-        } else if (id == R.id.action_update) {
+        }
+//        else if (id == R.id.action_search) {
+//            SearchKitActivity.show(this);
+//            return true;}
+            else if (id == R.id.action_update) {
             Toast.makeText(this, R.string.toast_check_updating, Toast.LENGTH_SHORT).show();
             new ProductPresenter().update(this);
             return true;
-        } else if (id == R.id.action_help) {
-            HelpActivity.show(this);
-            return true;
-        } else if (id == R.id.action_about) {
-            AboutActivity.show(this);
-            return true;
         }
+//        else if (id == R.id.action_help) {
+//            HelpActivity.show(this);
+//            return true;
+//        }
+//        else if (id == R.id.action_about) {
+//            AboutActivity.show(this);
+//            return true;}
         return super.onOptionsItemSelected(item);
     }
 
+    //
     @Override
     public void syncStart() {
         mLoading.start();
     }
 
+    //
     @Override
     public void syncStop(@StringRes int statusRes) {
         mLoading.stop();
@@ -217,7 +222,7 @@ public class MainActivity extends BaseActivity implements ProductView, Toolbar.O
 
     class SectionsPagerAdapter extends FragmentPagerAdapter implements ViewPager.OnPageChangeListener {
         private RecordsFragment recordsFragment;
-        private QuickFragment quickFragment;
+//        private QuickFragment quickFragment;
         private ContactsFragment contactsFragment;
 
         public SectionsPagerAdapter(FragmentManager fm) {
@@ -227,29 +232,29 @@ public class MainActivity extends BaseActivity implements ProductView, Toolbar.O
 
         @Override
         public Fragment getItem(int position) {
-            if (position == 1)
+            if (position == 0)
                 return recordsFragment == null ? recordsFragment = new RecordsFragment() : recordsFragment;
-            else if (position == 0)
-                return quickFragment == null ? quickFragment = new QuickFragment() : quickFragment;
-            else if (position == 2)
+//            else if (position == 0)
+//                return quickFragment == null ? quickFragment = new QuickFragment() : quickFragment;
+            else if (position == 1)
                 return contactsFragment == null ? contactsFragment = new ContactsFragment() : contactsFragment;
             return null;
         }
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
-            if (position == 1)
+            if (position == 0)
                 recordsFragment = null;
-            else if (position == 0)
-                quickFragment = null;
-            else if (position == 2)
+//            else if (position == 0)
+//                quickFragment = null;
+            else if (position == 1)
                 contactsFragment = null;
             super.destroyItem(container, position, object);
         }
 
         @Override
         public int getCount() {
-            return 3;
+            return 2;
         }
 
         @Override

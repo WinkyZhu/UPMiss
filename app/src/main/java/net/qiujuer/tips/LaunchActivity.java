@@ -14,7 +14,7 @@ import net.qiujuer.tips.view.activity.GuideActivity;
 import net.qiujuer.tips.view.activity.MainActivity;
 import net.qiujuer.tips.view.util.AnimationListener;
 
-
+//启动页
 public class LaunchActivity extends BaseActivity {
     private int mDoneCount = 0;
     private boolean mAlreadySkip = false;
@@ -38,6 +38,7 @@ public class LaunchActivity extends BaseActivity {
         thread.start();
     }
 
+    //动画加载图片
     private void iconIn() {
         Animation anim = AnimationUtils.loadAnimation(this,
                 R.anim.anim_launch_item_fade_in);
@@ -81,7 +82,7 @@ public class LaunchActivity extends BaseActivity {
     private void skipByDelay() {
         Intent intent;
         if (AppPresenter.isFirstUse()) {
-            Toast.makeText(this, R.string.app_welcome, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.app_welcome_alert, Toast.LENGTH_LONG).show();
             intent = new Intent(this, GuideActivity.class);
         } else {
             intent = new Intent(this, MainActivity.class);

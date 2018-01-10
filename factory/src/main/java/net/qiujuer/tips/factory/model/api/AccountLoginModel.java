@@ -9,10 +9,20 @@ import org.json.JSONObject;
 public class AccountLoginModel extends AppInfoModel {
     @SerializedName("Email")
     private String email;
+    @SerializedName("Phone")
+    private String phone;
     @SerializedName("Password")
     private String password;
     @SerializedName("IsExplicit")
     private boolean isExplicit;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public String getEmail() {
         return email;
