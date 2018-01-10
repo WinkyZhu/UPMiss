@@ -109,14 +109,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
-    @Override
-    public String getEmail() {
-        if (isLogin())
-            return mEditLoginEmail.getText().toString();
-        else
-            return mEditRegisterEmail.getText().toString();
-    }
-
+//////////////////////////////////////////
     @Override
     public String getPhone() {
         if (isLogin())
@@ -158,11 +151,6 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
-    @Override
-    public void setEmail(String email) {
-        mEditLoginEmail.setText(email);
-        mEditRegisterEmail.setText(email);
-    }
 
     @Override
     public void setPhone(String phone) {

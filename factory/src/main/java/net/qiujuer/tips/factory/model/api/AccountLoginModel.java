@@ -7,8 +7,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AccountLoginModel extends AppInfoModel {
-    @SerializedName("Email")
-    private String email;
+//    @SerializedName("Email")
+//    private String email;
     @SerializedName("Phone")
     private String phone;
     @SerializedName("Password")
@@ -24,13 +24,13 @@ public class AccountLoginModel extends AppInfoModel {
         this.phone = phone;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+//    public String getEmail() {
+//        return email;
+//    }
+//
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
 
     public String getPassword() {
         return password;
