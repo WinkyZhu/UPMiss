@@ -57,11 +57,11 @@ public class MainActivity extends BaseActivity implements ProductView, Toolbar.O
         setContentView(R.layout.activity_main);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-//        mToolbar.setNavigationIcon(R.mipmap.ic_nav_main);
-//        mToolbar.setOnMenuItemClickListener(this);
-//        mToolbar.inflateMenu(R.menu.menu_main);
+        mToolbar.setNavigationIcon(R.mipmap.ic_nav_main);
+        mToolbar.setOnMenuItemClickListener(this);
+        mToolbar.inflateMenu(R.menu.menu_main);
 
-//        initSyncItem();
+        initSyncItem();
         initTitle();
 
         mCreate = findViewById(R.id.main_img_create);

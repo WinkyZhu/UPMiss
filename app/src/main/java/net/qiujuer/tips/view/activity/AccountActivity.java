@@ -118,6 +118,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
             return mEditRegisterEmail.getText().toString();
     }
 
+    //密码
     @Override
     public String getPassword() {
         if (isLogin())
@@ -126,6 +127,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
             return mEditRegisterPassword.getText().toString();
     }
 
+    //确认密码
     @Override
     public String getConfirmPassword() {
         return mEditRegisterPasswordConfirm.getText().toString();

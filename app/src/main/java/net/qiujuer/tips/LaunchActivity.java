@@ -9,6 +9,9 @@ import android.widget.Toast;
 
 import net.qiujuer.genius.kit.handler.Run;
 import net.qiujuer.tips.factory.presenter.AppPresenter;
+import net.qiujuer.tips.factory.presenter.SyncPresenter;
+import net.qiujuer.tips.factory.view.SyncView;
+import net.qiujuer.tips.view.activity.AccountActivity;
 import net.qiujuer.tips.view.activity.BaseActivity;
 import net.qiujuer.tips.view.activity.GuideActivity;
 import net.qiujuer.tips.view.activity.MainActivity;
@@ -18,6 +21,8 @@ import net.qiujuer.tips.view.util.AnimationListener;
 public class LaunchActivity extends BaseActivity {
     private int mDoneCount = 0;
     private boolean mAlreadySkip = false;
+    private SyncView mView;
+    private SyncPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,9 @@ public class LaunchActivity extends BaseActivity {
         };
         thread.setDaemon(true);
         thread.start();
+
+
+        mPresenter = new SyncPresenter(mView);
     }
 
     //动画加载图片
@@ -84,9 +92,17 @@ public class LaunchActivity extends BaseActivity {
         if (AppPresenter.isFirstUse()) {
             Toast.makeText(this, R.string.app_welcome_alert, Toast.LENGTH_LONG).show();
             intent = new Intent(this, GuideActivity.class);
-        } else {
+        } else if(!AppPresenter.isLogin()){
+//            SyncView view = mView;
+//            view.syncStop(net.qiujuer.tips.factory.R.string.status_network_unlink);
+//            mPresenter.sync();
+//            return;
+            intent = new Intent(this, AccountActivity.class);
+
+        }else {
             intent = new Intent(this, MainActivity.class);
         }
+
         startActivity(intent);
         finish();
     }

@@ -65,8 +65,8 @@
                 android:id="@+id/account_edit_register_email"
                 style="@style/EditText.Account"
                 android:digits=".0123456789qwertyuiopasdfghjklzxcvbnm@"
-                android:hint="@string/txt_email"
-                android:inputType="textEmailAddress"
+                android:hint="@string/txt_phone"
+                android:inputType="phone"
                 android:textColorHint="@color/color_edit_account_hint" />
 
             <net.qiujuer.genius.ui.widget.EditText
